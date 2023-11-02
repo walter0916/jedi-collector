@@ -59,3 +59,12 @@ class Jedi(models.Model):
 
   def __str__(self):
     return self.name
+  
+  def get_jeditype_display_value(self):
+        return dict(JEDITYPE)[self.jeditype]
+  
+  def get_mentor_display_value(self):
+        return dict(MENTOR)[self.mentor]
+  
+  def get_planet_display_value(self):
+        return dict(PLANET)[self.planet]
