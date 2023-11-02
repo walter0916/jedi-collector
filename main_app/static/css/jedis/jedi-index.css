@@ -5,6 +5,11 @@
   flex-wrap: wrap;
 }
 
+.jedi-img {
+  width: 90%;
+  margin-left: 15px;
+}
+
 .card {
   width: 275px;
   margin: 10px;
