@@ -10,12 +10,12 @@ def home(request):
 class JediCreate(CreateView):
   model = Jedi
   fields = ['name', 'planet', 'age', 'lightsabercolor', 'jeditype', 'mentor']
-  success_url = '/home/'
+  success_url = ''
 
   def form_valid(self, form):
     jedi_type = form.cleaned_data['jeditype']
     stats = get_jedi_stats(jedi_type)
-    form.instance.powerlevel = stats['power_level']
+    form.instance.powerlevel = stats['powerlevel']
     form.instance.lightsaberskill = stats['lightsaberskills']
     form.instance.forceabilities = stats['forceabilities']
     form.instance.defense = stats['defense']
@@ -26,7 +26,7 @@ class JediCreate(CreateView):
     return super().form_valid(form)
 
 def get_jedi_stats(jedi_type):
-  if jedi_type == 'consular':
+  if jedi_type == 'C':
     return {
       'powerlevel': 7,
       'lightsaberskills': 6,
@@ -37,7 +37,7 @@ def get_jedi_stats(jedi_type):
       'stamina': 7,
       'charisma': 8
     }
-  elif jedi_type == 'sentinel':
+  elif jedi_type == 'S':
     return {
       'powerlevel': 8,
       'lightsaberskills': 8,
@@ -48,7 +48,7 @@ def get_jedi_stats(jedi_type):
       'stamina': 8,
       'charisma': 7
     }
-  elif jedi_type == 'guardian':
+  elif jedi_type == 'G':
     return {
       'powerlevel': 9,
       'lightsaberskills': 9,
