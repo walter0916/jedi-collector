@@ -17,9 +17,25 @@ MENTOR = (
   ('C', 'Count Dooku')
 )
 
+PLANET = (
+  ('T', 'Tatooine'),
+  ('C', 'Coruscant'),
+  ('N', 'Naboo'),
+  ('K', 'Kamino'),
+  ('D', 'Dagobah'), 
+  ('A', 'Alderaan'),
+  ('M', 'Mustafar'),
+  ('J', 'Jakku'),
+  ('B', 'Bespin')
+)
+
 class Jedi(models.Model):
   name = models.CharField(max_length=100) 
-  planet = models.CharField(max_length=100) 
+  planet = models.CharField(
+    max_length=1,
+    choices=PLANET,
+    default=PLANET[0][0]
+    ) 
   age = models.IntegerField()
   lightsabercolor = models.CharField(max_length=100)
   jeditype = models.CharField(
