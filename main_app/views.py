@@ -74,3 +74,7 @@ def get_jedi_stats(jedi_type):
 def jedi_index(request):
   jedis = Jedi.objects.all()
   return render(request, 'jedis/index.html', {'jedis': jedis})
+
+def jedi_detail(request, jedi_id):
+  jedi = Jedi.objects.get(id=jedi_id)
+  return render(request, 'jedis/detail.html', {'jedi': jedi})

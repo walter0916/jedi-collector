@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/jedis/jedi-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="jedi-container">
+  <div class="jedi-img">
+    <img 
+      src="" 
+      alt=""
+    >
+  </div>
+  <div class="jedi-details">
+    <h1>{{ jedi.name }}</h1>
+    {% if jedi.age > 0 %}
+      <h2>A {{ jedi.age }} year old jedi from {{ jedi.get_planet_display_value }}</h2>
+    {% else %}
+      <h2>A jedi younglin.</h2>
+    {% endif %}
+    <p>an aspiring jedi {{jedi.get_jeditype_display_value}} being trained by {{ jedi.get_mentor_display_value }}</p>
+    <h3> JEDI STATS:</h3>
+    <p>Power Level: {{ jedi.powerlevel }}</p>
+    <p>Lighstaber Skill: {{ jedi.lightsaberskill }}</p>
+    <p>Force Ability: {{ jedi.forceabilities }}</p>
+    <p>Defense: {{ jedi.defense }}</p>
+    <p>Agility: {{jedi.agility}}</p>
+    <p>Wisdom: {{jedi.wisdom}}</p>
+    <p>Stamina: {{jedi.stamina}}</p>
+    <p>Charisma: {{jedi.charisma}}</p>
+  </div>
+</section>
+
+{% endblock %}

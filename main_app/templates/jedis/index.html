@@ -18,21 +18,23 @@
 <section class="card-container">
   {% for jedi in jedis %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="" 
-            alt=""
-          >
+      <a href="/jedi/{{ jedi.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="" 
+              alt=""
+            >
+          </div>
+          <h2 class="card-title">{{ jedi.name }}</h2>
+          {% if jedi.age > 0 %}
+            <p>A {{ jedi.age }} year old jedi living on {{ jedi.get_planet_display_value }}</p>
+          {% else %}
+            <p>A jedi younglin.</p>
+          {% endif %}
+          <p>Being trained by {{ jedi.get_mentor_display_value }} to become a jedi {{ jedi.get_jeditype_display_value }}</p>
         </div>
-        <h2 class="card-title">{{ jedi.name }}</h2>
-        {% if jedi.age > 0 %}
-          <p>A {{ jedi.age }} year old jedi living on {{ jedi.get_planet_display_value }}</p>
-        {% else %}
-          <p>A jedi younglin.</p>
-        {% endif %}
-        <p>Being trained by {{ jedi.get_mentor_display_value }} to become a jedi {{ jedi.get_jeditype_display_value }}</p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>
