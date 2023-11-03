@@ -30,10 +30,10 @@
   </div>
   <div class="jedi-details">
     <h1>{{ jedi.name }}</h1>
-    {% if jedi.age > 0 %}
-      <h2>A {{ jedi.age }} year old jedi from {{ jedi.get_planet_display_value }}</h2>
+    {% if jedi.age > 10 %}
+      <h2>A {{ jedi.age }} year old Jedi from {{ jedi.get_planet_display_value }}</h2>
     {% else %}
-      <h2>A jedi younglin.</h2>
+      <h2>A Jedi youngling.</h2>
     {% endif %}
     <p>an aspiring jedi {{jedi.get_jeditype_display_value}} being trained by {{ jedi.get_mentor_display_value }}</p>
     <h3> JEDI STATS:</h3>
@@ -117,6 +117,11 @@
       class="subsection-content"
       autocomplete="off"
     >
+      {% if jedi.trained_for_today %}
+      <p class="trained">{{ jedi.name }} has completed all required trainings for they day!</p>
+      {% else %}
+      <p class="not-trained">{{ jedi.name }} is eager to train!</p>
+      {% endif %}
       {% csrf_token %}
       {{ training_form.as_p }}
       <button type="submit" class="btn submit">Add Training</button>

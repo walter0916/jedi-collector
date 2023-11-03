@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date 
 
 JEDITYPE = (
   ('C', 'Consular'),
@@ -96,6 +97,9 @@ class Jedi(models.Model):
 
   def get_absolute_url(self):
       return reverse("jedi-detail", kwargs={"jedi_id": self.id})
+  
+  def trained_for_today(self):
+      return self.training_set.filter(date=date.today()).count() >= len(TRAINING)
   
 class Training(models.Model):
   date = models.DateField('Training Date')
