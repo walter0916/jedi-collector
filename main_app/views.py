@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Jedi
 
 
@@ -70,6 +70,14 @@ def get_jedi_stats(jedi_type):
       'charisma': 5
     }
   
+class JediUpdate(UpdateView):
+  model = Jedi 
+  fields = ['name', 'planet', 'lightsabercolor', 'mentor']
+  
+class JediDelete(DeleteView):
+  model = Jedi 
+  success_url = '/jedi/'
+
 def jedi_index(request):
   jedis = Jedi.objects.all()
   return render(request, 'jedis/index.html', {'jedis': jedis})

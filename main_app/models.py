@@ -30,6 +30,14 @@ PLANET = (
   ('B', 'Bespin')
 )
 
+COLOR = (
+  ('B', 'Blue'),
+  ('G', 'Green'),
+  ('R', 'Red'),
+  ('P', 'Purple'),
+  ('Y', 'Yellow')
+)
+
 class Jedi(models.Model):
   name = models.CharField(max_length=100) 
   planet = models.CharField(
@@ -38,7 +46,11 @@ class Jedi(models.Model):
     default=PLANET[0][0]
     ) 
   age = models.IntegerField()
-  lightsabercolor = models.CharField(max_length=100)
+  lightsabercolor = models.CharField(
+    max_length=1,
+    choices=COLOR,
+    default=COLOR[0][0]
+    )
   jeditype = models.CharField(
     max_length=1,
     choices=JEDITYPE,
@@ -69,6 +81,9 @@ class Jedi(models.Model):
   
   def get_planet_display_value(self):
         return dict(PLANET)[self.planet]
+  
+  def get_lightsabercolor_display_value(self):
+      return dict(COLOR)[self.lightsabercolor]
 
   def get_absolute_url(self):
       return reverse("jedi-detail", kwargs={"jedi_id": self.id})
