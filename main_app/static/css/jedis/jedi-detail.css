@@ -24,6 +24,13 @@
   margin-top: 20px;
 }
 
+.trainings-mission-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
 
 .subsection-title {
   display: flex;
@@ -40,6 +47,24 @@
   height: 25px;
   width: 25px;
   margin-right: 10px;
+}
+
+.not-trained,
+.trained,
+.no-missions,
+.all-missions {
+  margin: 0;
+  font-weight: bold;
+}
+
+.not-trained,
+.no-missions {
+  color: var(--danger);
+}
+
+.trained,
+.all-missions {
+  color: var(--submit);
 }
 
 .jedi-details h1 {
@@ -64,6 +89,19 @@
   margin: 5px 0;
 }
 
+.trainings-mission-container > section {
+  width: 80%;
+  min-width: 360px;
+  border: var(--borders);
+  border-radius: var(--card-border-radius);
+  padding: 10px;
+  box-shadow: var(--card-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .subsection-title img {
   height: 42px;
   margin-left: 8px;
@@ -71,6 +109,12 @@
 
 .subsection-title img:first-of-type {
   margin-left: 16px;
+}
+
+.trainings h3,
+.missions h3 {
+  font-size: var(--font-xl);
+  margin: 10px 0;
 }
 
 .subsection-content p,
@@ -83,6 +127,35 @@
 .subsection-content select {
   margin-left: 5px;
   padding: 3px;
+}
+
+.trainings td {
+  padding: 8px 5px;
+  font-size: var(--font-reg);
+}
+
+.trainings th {
+  font-size: var(--font-l);
+  padding: 5px 5px 0;
+  border-bottom: rgb(36, 116, 248) solid 2px;
+}
+
+.trainings tr:nth-child(even) {
+  background-color: #f3f3fd;
+}
+
+.mission-container p {
+  margin: 12px 0;
+}
+
+.mission-container a {
+  text-decoration: none;
+  color: #111;
+}
+
+.mission-container .btn {
+  padding: 3px 10px;
+  margin-left: 10px;
 }
 
 #file-input {
@@ -110,6 +183,22 @@
     margin-right: 25px;
   }
 
+  .trainings-mission-container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .trainings-mission-container > section {
+    width: 45%;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .trainings-mission-container {
+    padding: 0 40px;
+  }
 }
 
 

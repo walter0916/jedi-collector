@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Jedi
+from .forms import TrainingForm
 
 
 # Define the home view
@@ -84,4 +85,35 @@ def jedi_index(request):
 
 def jedi_detail(request, jedi_id):
   jedi = Jedi.objects.get(id=jedi_id)
-  return render(request, 'jedis/detail.html', {'jedi': jedi})
+  training_form = TrainingForm()
+  return render(request, 'jedis/detail.html', {'jedi': jedi, 'training_form': training_form})
+
+def add_training(request, jedi_id):
+  jedi = Jedi.objects.get(id=jedi_id)
+  form = TrainingForm(request.POST)
+  if form.is_valid():
+    new_training = form.save(commit=False)
+    new_training.jedi_id = jedi_id
+    new_training.save()
+    if new_training.type == 'L':
+      jedi.lightsaberskill = min(jedi.lightsaberskill + 1, 100)
+      jedi.agility = min(jedi.agility + 1, 100)
+      jedi.save()
+    if new_training.type == 'M':
+      jedi.stamina = min(jedi.stamina + 1, 100)
+      jedi.charisma = min(jedi.charisma + 1, 100)
+      jedi.save()
+    if new_training.type == 'S':
+      jedi.wisdom = min(jedi.wisdom + 1, 100)
+      jedi.save()
+    if new_training.type == 'T':
+      jedi.forceabilities = min(jedi.forceabilities + 1, 100)
+      jedi.save()
+    if new_training.type == 'F':
+      jedi.powerlevel = min(jedi.powerlevel + 1, 100)
+      jedi.defense = min(jedi.defense + 1, 100)
+      jedi.save()
+    if new_training.type == 'D':
+      jedi.charisma = min(jedi.charisma + 1, 100)
+      jedi.save()
+  return redirect('jedi-detail', jedi_id=jedi_id)

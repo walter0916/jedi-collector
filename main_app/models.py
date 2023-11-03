@@ -38,6 +38,15 @@ COLOR = (
   ('Y', 'Yellow')
 )
 
+TRAINING = (
+  ('L', 'Lightsaber Training'),
+  ('M', 'Meditation'),
+  ('S', 'Study of Jedi code'),
+  ('T', 'Telekinesis'),
+  ('F', 'Force Persuasion'),
+  ('D', 'Diplomatic Training')
+)
+
 class Jedi(models.Model):
   name = models.CharField(max_length=100) 
   planet = models.CharField(
@@ -88,3 +97,15 @@ class Jedi(models.Model):
   def get_absolute_url(self):
       return reverse("jedi-detail", kwargs={"jedi_id": self.id})
   
+class Training(models.Model):
+  date = models.DateField('Training Date')
+  type = models.CharField(
+    'Training Type',
+    max_length=1,
+    choices=TRAINING,
+    default=TRAINING[0][0]
+    )
+  jedi = models.ForeignKey(Jedi, on_delete=models.CASCADE)
+
+  def __str__(self):
+      return f"{self.get_type_display()} on {self.date}"
