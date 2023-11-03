@@ -141,6 +141,42 @@
       </tbody>
     </table>
   </section>
+  <section class="missions">
+    <div class="subsection-title">
+      <h2>Missions</h2>
+      <img src="{% static 'images/lightsaber.svg' %}" alt="">
+    </div>
+    <h3>Send Jedi on a mission</h3>
+    <form
+      action="{% url 'add-mission' jedi.id %}"
+      method="post" 
+      class="subsection-content"
+      autocomplete="off"
+    >
+      {% if jedi.mission_for_today %}
+      <p class="trained">{{ jedi.name }} is on a mission for the day!</p>
+      {% else %}
+      <p class="not-trained">{{ jedi.name }} is eager to go on a mission!</p>
+      {% endif %}
+      {% csrf_token %}
+      {{ mission_form.as_p }}
+      <button type="submit" class="btn submit">Add Training</button>
+    </form>
+    <h3>Past Missions</h3>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Mission</th></tr>
+      </thead>
+      <tbody>
+        {% for mission in jedi.mission_set.all %}
+          <tr>
+            <td>{{mission.date}}</td>
+            <td>{{mission.get_type_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
 </div>
 
 {% endblock %}

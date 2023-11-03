@@ -48,6 +48,18 @@ TRAINING = (
   ('D', 'Diplomatic Training')
 )
 
+MISSION = (
+  ('R', 'Rescue Mission'),
+  ('A', 'Artifact Retrieval'),
+  ('P', 'Peacekeeping'),
+  ('I', 'Infiltration'),
+  ('E', 'Exploration'), 
+  ('S', 'Sabotage'),
+  ('G', 'Guardian Mission'),
+  ('C', 'Crisis Response'), 
+  ('B', 'Bounty Hunter Pursuit')
+)
+
 class Jedi(models.Model):
   name = models.CharField(max_length=100) 
   planet = models.CharField(
@@ -84,22 +96,25 @@ class Jedi(models.Model):
     return self.name
   
   def get_jeditype_display_value(self):
-        return dict(JEDITYPE)[self.jeditype]
+    return dict(JEDITYPE)[self.jeditype]
   
   def get_mentor_display_value(self):
-        return dict(MENTOR)[self.mentor]
+    return dict(MENTOR)[self.mentor]
   
   def get_planet_display_value(self):
-        return dict(PLANET)[self.planet]
+    return dict(PLANET)[self.planet]
   
   def get_lightsabercolor_display_value(self):
-      return dict(COLOR)[self.lightsabercolor]
+    return dict(COLOR)[self.lightsabercolor]
 
   def get_absolute_url(self):
-      return reverse("jedi-detail", kwargs={"jedi_id": self.id})
+    return reverse("jedi-detail", kwargs={"jedi_id": self.id})
   
   def trained_for_today(self):
-      return self.training_set.filter(date=date.today()).count() >= len(TRAINING)
+    return self.training_set.filter(date=date.today()).count() >= len(TRAINING)
+  
+  def mission_for_today(self):
+    return self.mission_set.filter(date=date.today()).count() >= 1
   
 class Training(models.Model):
   date = models.DateField('Training Date')
@@ -111,5 +126,18 @@ class Training(models.Model):
     )
   jedi = models.ForeignKey(Jedi, on_delete=models.CASCADE)
 
+  def __str__(self):
+      return f"{self.get_type_display()} on {self.date}"
+  
+class Mission(models.Model):
+  date = models.DateField('Mission Date')
+  type = models.CharField(
+    'Mission Type',
+    max_length=1,
+    choices=MISSION,
+    default=MISSION[0][0]
+    )
+  jedi = models.ForeignKey(Jedi, on_delete=models.CASCADE)
+  
   def __str__(self):
       return f"{self.get_type_display()} on {self.date}"

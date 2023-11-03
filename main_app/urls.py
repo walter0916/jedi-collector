@@ -9,4 +9,5 @@ urlpatterns = [
   path('jedi/<int:pk>/update/', views.JediUpdate.as_view(), name='jedi-update'),
   path('jedi/<int:pk>/delete/', views.JediDelete.as_view(), name='jedi-delete'),
   path('jedi/<int:jedi_id>/add-training', views.add_training, name='add-training'),
+  path('jedi/<int:jedi_id>/add-mission', views.add_mission, name='add-mission'),
 ]

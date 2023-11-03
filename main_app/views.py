@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Jedi
-from .forms import TrainingForm
+from .models import Jedi, Mission
+from .forms import TrainingForm, MissionForm
+import math 
+import random
+from datetime import date 
 
 
 # Define the home view
@@ -86,7 +89,8 @@ def jedi_index(request):
 def jedi_detail(request, jedi_id):
   jedi = Jedi.objects.get(id=jedi_id)
   training_form = TrainingForm()
-  return render(request, 'jedis/detail.html', {'jedi': jedi, 'training_form': training_form})
+  mission_form = MissionForm()
+  return render(request, 'jedis/detail.html', {'jedi': jedi, 'training_form': training_form, 'mission_form': mission_form})
 
 def add_training(request, jedi_id):
   jedi = Jedi.objects.get(id=jedi_id)
@@ -116,4 +120,69 @@ def add_training(request, jedi_id):
     if new_training.type == 'D':
       jedi.charisma = min(jedi.charisma + 1, 100)
       jedi.save()
+  return redirect('jedi-detail', jedi_id=jedi_id)
+
+
+def calculate_success_probability(jedi, mission_type):
+  mission_type_weights = {
+    'R': {'agility': 0.5, 'lightsaberskill': 0.3, 'stamina': 0.2},  # Rescue Mission
+    'A': {'wisdom': 0.4, 'forceabilities': 0.3, 'stamina': 0.3},  # Artifact Retrieval
+    'P': {'wisdom': 0.4, 'charisma': 0.3, 'stamina': 0.3},  # Peacekeeping
+    'I': {'wisdom': 0.4, 'forceabilities': 0.3, 'agility': 0.3},  # Infiltration
+    'E': {'agility': 0.4, 'stamina': 0.3, 'lightsaberskill': 0.3},  # Exploration
+    'S': {'agility': 0.4, 'forceabilities': 0.3, 'charisma': 0.3},  # Sabotage
+    'G': {'charisma': 0.4, 'wisdom': 0.3, 'stamina': 0.3},  # Guardian Mission
+    'C': {'charisma': 0.4, 'wisdom': 0.3, 'forceabilities': 0.3},  # Crisis Response
+    'B': {'charisma': 0.4, 'agility': 0.3, 'forceabilities': 0.3}  # Bounty Hunter Pursuit
+  }
+    
+  if mission_type in mission_type_weights:
+    weights = mission_type_weights[mission_type]
+    total_weighted_stats = sum(jedi[stat] * weight for stat, weight in weights.items())
+    success_probability = 1 / (1 + math.exp(-total_weighted_stats))
+    return success_probability
+  else:
+    return 0
+
+def add_mission(request, jedi_id):
+  jedi = Jedi.objects.get(id=jedi_id)
+  form = MissionForm(request.POST)
+  today = date.today()
+  existing_mission = Mission.objects.filter(jedi_id=jedi_id, date=today).first()
+  if existing_mission:
+    return redirect('jedi-detail', jedi_id=jedi_id)
+  if form.is_valid():
+    new_mission = form.save(commit=False)
+    new_mission.jedi_id = jedi_id
+    mission_type = new_mission.type
+    success_probability = calculate_success_probability({
+      'agility': jedi.agility,
+      'lightsaberskill': jedi.lightsaberskill,
+      'wisdom': jedi.wisdom,
+      'forceabilities': jedi.forceabilities,
+      'stamina': jedi.stamina,
+      'charisma': jedi.charisma,
+      'defense': jedi.defense,
+      'powerlevel': jedi.powerlevel
+    }, mission_type)    
+    random_number = random.random()
+    if random_number <= success_probability:
+      jedi.lightsaberskill = min(jedi.lightsaberskill + 5, 100)
+      jedi.agility = min(jedi.agility + 5, 100)
+      jedi.stamina = min(jedi.stamina + 5, 100)
+      jedi.wisdom = min(jedi.wisdom + 5, 100)
+      jedi.forceabilities = min(jedi.forceabilities + 5, 100)
+      jedi.powerlevel = min(jedi.powerlevel + 5, 100)
+      jedi.defense = min(jedi.defense + 5, 100)
+      jedi.save()
+    else:
+      jedi.lightsaberskill = max(jedi.lightsaberskill - 5, 0)
+      jedi.agility = max(jedi.agility - 5, 0)
+      jedi.stamina = max(jedi.stamina - 5, 0)
+      jedi.wisdom = max(jedi.wisdom - 5, 0)
+      jedi.forceabilities = max(jedi.forceabilities - 5, 0)
+      jedi.powerlevel = max(jedi.powerlevel - 5, 0)
+      jedi.defense = max(jedi.defense - 5, 0)
+      jedi.save()     
+    new_mission.save()
   return redirect('jedi-detail', jedi_id=jedi_id)
