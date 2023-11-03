@@ -10,7 +10,6 @@ def home(request):
 class JediCreate(CreateView):
   model = Jedi
   fields = ['name', 'planet', 'age', 'lightsabercolor', 'jeditype', 'mentor']
-  success_url = '/'
 
   def form_valid(self, form):
     jedi_type = form.cleaned_data['jeditype']

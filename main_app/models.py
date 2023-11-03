@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 JEDITYPE = (
   ('C', 'Consular'),
@@ -68,3 +69,7 @@ class Jedi(models.Model):
   
   def get_planet_display_value(self):
         return dict(PLANET)[self.planet]
+
+  def get_absolute_url(self):
+      return reverse("jedi-detail", kwargs={"jedi_id": self.id})
+  

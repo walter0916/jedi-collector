@@ -10,16 +10,24 @@
   margin-left: 15px;
 }
 
+.list-title {
+  -webkit-text-stroke: 2px gold;
+  -webkit-text-fill-color: transparent;
+  font-size: 120px;
+}
+
 .card {
   width: 275px;
   margin: 10px;
   border: var(--borders);
   box-shadow: var(--card-box-shadow);
+  background-color: black;
 }
 
 .card-content {
   padding: 10px;
   width: 100%;
+  color: gold;
 }
 
 .usr-img {
@@ -40,4 +48,15 @@
 .card p {
   margin: 5px 0;
   font-size: var(--font-reg);
+}
+
+body {
+  /* background-color: black; */
+  background-image: url("https://i.imgur.com/J5ZEcwQ.jpg");
+  background-position: center;
+  background-size: contain;
+}
+
+.card-title {
+  color: aqua;
 }

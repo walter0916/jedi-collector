@@ -95,8 +95,17 @@ nav li {
 
 .header-logo-container {
   margin: auto;
-  padding: 10px 20px 0;
+  padding: 10px 10px 0;
   max-width: 500px;
+  text-decoration: none;
+}
+
+.header-logo-container a {
+  text-decoration: none;
+  color: gold;
+  font-weight: 600;
+  font-size: 25px;
+  margin-left: 30px;
 }
 
 .page-header {
@@ -144,12 +153,12 @@ nav li {
 }
 
 .page-header h1 {
-  font-size: var(--font-xxl);
+  font-size: var(--font-xtreme);
   margin: 0;
 }
 
 .page-header img {
-  height: 40px;
+  height: 50px;
   margin-left:15px;
 }
 
