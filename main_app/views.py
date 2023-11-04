@@ -3,16 +3,20 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from .models import Jedi, Mission
 from .forms import TrainingForm, MissionForm
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 import math 
 import random
 from datetime import date 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Define the home view
 class Home(LoginView):
   template_name = 'home.html'
 
-class JediCreate(CreateView):
+class JediCreate(LoginRequiredMixin, CreateView):
   model = Jedi
   fields = ['name', 'planet', 'age', 'lightsabercolor', 'jeditype', 'mentor']
 
@@ -27,6 +31,7 @@ class JediCreate(CreateView):
     form.instance.wisdom = stats['wisdom']
     form.instance.stamina = stats['stamina']
     form.instance.charisma = stats['charisma']
+    form.instance.user = self.request.user
     return super().form_valid(form)
 
 def get_jedi_stats(jedi_type):
@@ -83,10 +88,12 @@ class JediDelete(DeleteView):
   model = Jedi 
   success_url = '/jedi/'
 
+@login_required
 def jedi_index(request):
-  jedis = Jedi.objects.all()
+  jedis = Jedi.objects.filter(user=request.user)
   return render(request, 'jedis/index.html', {'jedis': jedis})
 
+@login_required
 def jedi_detail(request, jedi_id):
   jedi = Jedi.objects.get(id=jedi_id)
   training_form = TrainingForm()
@@ -178,6 +185,7 @@ def add_mission(request, jedi_id):
       jedi.forceabilities = min(jedi.forceabilities + 5, 100)
       jedi.powerlevel = min(jedi.powerlevel + 5, 100)
       jedi.defense = min(jedi.defense + 5, 100)
+      jedi.charisma = min(jedi.charisma + 5, 100)
       jedi.save()
     else:
       jedi.lightsaberskill = max(jedi.lightsaberskill - 5, 0)
@@ -187,6 +195,21 @@ def add_mission(request, jedi_id):
       jedi.forceabilities = max(jedi.forceabilities - 5, 0)
       jedi.powerlevel = max(jedi.powerlevel - 5, 0)
       jedi.defense = max(jedi.defense - 5, 0)
+      jedi.charisma = max(jedi.charisma - 5, 0)
       jedi.save()     
     new_mission.save()
   return redirect('jedi-detail', jedi_id=jedi_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('cat-index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
