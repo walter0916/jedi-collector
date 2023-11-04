@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView
 from .models import Jedi, Mission
 from .forms import TrainingForm, MissionForm
 import math 
@@ -8,8 +9,8 @@ from datetime import date
 
 
 # Define the home view
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 class JediCreate(CreateView):
   model = Jedi
@@ -138,6 +139,9 @@ def calculate_success_probability(jedi, mission_type):
     
   if mission_type in mission_type_weights:
     weights = mission_type_weights[mission_type]
+    for stat, weight in weights.items():
+      if jedi[stat] < 30:
+        weights[stat] = weight * 0.005
     total_weighted_stats = sum(jedi[stat] * weight for stat, weight in weights.items())
     success_probability = 1 / (1 + math.exp(-total_weighted_stats))
     return success_probability

@@ -1,25 +1,13 @@
-main {
+.wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: 100%;
-
-}
-
-/* body {
-  background-image: url("https://i.imgur.com/m9bpVKU.jpg");
-  background-size: cover;
-} */
-
-main > section {
-  width: 100%;
-  padding: 10px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: space-around; /* Align elements with space in between */
+  align-items: center; /* Center items vertically within the wrapper */
+  width: 100%; /* Adjust the width of the wrapper as needed */
+  margin: 0 auto; /* Center the wrapper horizontally */
+  margin-top: 40%;
 }
+
 
 /* Animation properties */
 .star {
@@ -109,10 +97,8 @@ body {
 }
 
 .starwars-demo {
-  height: 17em;
-  left: 50%;
+  height: 19em;
   position: absolute;
-  top: 53%;
   transform: translate(-50%, -50%);
   width: 34em;
 }
@@ -180,7 +166,12 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 500px;
+  background-color: white;
+}
+#login {
+  width: 600px;
+  margin-top: 150px;
 }
 
 .login h1 {

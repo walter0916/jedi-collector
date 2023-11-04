@@ -144,7 +144,7 @@
   <section class="missions">
     <div class="subsection-title">
       <h2>Missions</h2>
-      <img src="{% static 'images/lightsaber.svg' %}" alt="">
+      <img src="{% static 'images/light-sabers.svg' %}" alt="">
     </div>
     <h3>Send Jedi on a mission</h3>
     <form
@@ -160,7 +160,7 @@
       {% endif %}
       {% csrf_token %}
       {{ mission_form.as_p }}
-      <button type="submit" class="btn submit">Add Training</button>
+      <button type="submit" class="btn submit">Send on Mission</button>
     </form>
     <h3>Past Missions</h3>
     <table>
