@@ -1,7 +1,18 @@
+body {
+  background-image: url("https://i.imgur.com/J5ZEcwQ.jpg");
+  background-size: cover;
+  color: #ffd700;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 85%;
+  color: #ffd700;
+}
+
+label {
+  font-size: 20px;
 }
 
 table {
