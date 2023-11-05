@@ -23,7 +23,7 @@
 
 <section class="jedi-container">
   <div class="jedi-img">
-    <img 
+    <img
       src="{% static 'images/baby-yoda.svg' %}" 
       alt=""
     >
@@ -49,20 +49,20 @@
       <a href="{% url 'jedi-update' jedi.id %}" class="btn warn">Edit</a>
       <a href="{% url 'jedi-delete' jedi.id %}" class="btn danger">Delete</a>
     </div>
+    <div class="message">
+      {% if jedi.get_lightsabercolor_display_value == 'Blue' %}
+          <p class="p_blue">Blue: your art is focused on sword fighting rather than on the control of the force.</p>
+      {% elif jedi.get_lightsabercolor_display_value == 'Red' %}
+          <p class="p_red">Red: you've studied the techniques of the dark side of the force?</p>
+      {% elif jedi.get_lightsabercolor_display_value == 'Green' %}
+          <p class="p_green">Green: you prefer the art of the force to study the techniques of sword fighting.</p>
+      {% elif jedi.get_lightsabercolor_display_value == 'Purple' %}
+          <p class="p_purple">Purple: you know lots of techniques on both sides of the force.</p>
+      {% elif jedi.get_lightsabercolor_display_value == 'Yellow' %}
+          <p class="p_yellow">Yellow: you have a deep understanding of balance in the force.</p>
+      {% endif %}
+    </div>
     <div class="lightsaber-container">
-      <div>
-        {% if jedi.get_lightsabercolor_display_value == 'Blue' %}
-            <p class="p_blue">Blue: your art is focused on sword fighting rather than on the control of the force.</p>
-        {% elif jedi.get_lightsabercolor_display_value == 'Red' %}
-            <p class="p_red">Red: you've studied the techniques of the dark side of the force?</p>
-        {% elif jedi.get_lightsabercolor_display_value == 'Green' %}
-            <p class="p_green">Green: you prefer the art of the force to study the techniques of sword fighting.</p>
-        {% elif jedi.get_lightsabercolor_display_value == 'Purple' %}
-            <p class="p_purple">Purple: you know lots of techniques on both sides of the force.</p>
-        {% elif jedi.get_lightsabercolor_display_value == 'Yellow' %}
-            <p class="p_yellow">Yellow: you have a deep understanding of balance in the force.</p>
-        {% endif %}
-      </div>
 		<div id="lightsaber" data-color="{{ jedi.get_lightsabercolor_display_value }}" >
 			<span id="light"></span>
 			<span id="generator">
@@ -83,10 +83,7 @@
 					<span></span><span></span>
 					<span></span><span></span>
 					<span></span><span></span>
-					<span></span><span></span>
-					<span></span><span></span>
-					<span></span><span></span>
-					<span></span><span></span>
+
 					<span></span><span></span>
 					<span class="long"></span>
 					<span class="long"></span>

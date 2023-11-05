@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/about.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+<section>
+<header class="header">
+  <h1>Welcome to Jedi Collector</h1>
+</header>
+
+<div class="container">
+  <h2>About Jedi Collector</h2>
+  <p>Jedi Collector is an exciting platform that allows you to dive into the expansive Star Wars universe and create your own Jedi characters. With our app, you can unleash your creativity and embark on thrilling adventures.</p>
+
+  <h3>Key Features</h3>
+  <ul class="features">
+      <li>Create Jedi: Design your unique Jedi characters by giving them names, home planets, mentors, lightsaber colors, and specific Jedi types (Consular, Guardian, Sentinel).</li>
+      <li>View Jedi Index: Explore your collection of created Jedi characters in an easy-to-navigate index page.</li>
+      <li>Details Page: Dive deep into each Jedi's details, including generated stats based on their Jedi type.</li>
+      <li>Training: Improve your Jedi's skills by providing them with specialized training sessions tailored to their Jedi type.</li>
+      <li>Missions: Send your Jedi on missions and test their abilities. Successes result in stat boosts, while failures lead to challenges.</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <p>Simply sign up and log in to get started. Create your Jedi characters, customize their attributes, and watch them come to life. Train them, send them on missions, and see how they evolve based on your decisions.</p>
+
+  <p>Join Jedi Collector now and become the master of your own Jedi destiny!</p>
+</div>
+</section>
+{% endblock %}

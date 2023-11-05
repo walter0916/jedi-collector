@@ -1,0 +1,42 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url("https://i.imgur.com/J5ZEcwQ.jpg");
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  color: #ffd700;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1);
+}
+
+h1, h2, h3 {
+  color: #ffd700;
+  font-size: 40px;
+}
+
+p {
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 25px;
+}
+
+.features {
+  color: #ffd700;
+  font-size: 20px;
+}
+
+.features li {
+  list-style-type: disc;
+  margin-left: 20px;
+}

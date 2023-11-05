@@ -1,14 +1,19 @@
+
+
 .jedi-container {
   padding: 35px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 50px;
 }
 
 .jedi-img {
   width: 75%;
   max-width: 350px;
+  position: absolute;
+  margin-left: 400px;
 }
 
 .usr-img {
@@ -216,13 +221,27 @@
   }
 }
 
+.message {
+  position: relative;
+  padding: 10px;
+  margin-bottom: -30px;
+
+}
 
 .lightsaber-container {
   display: flex;
   align-items: center;
   position: absolute;
-  margin-top: -600px;
-  margin-left: 300px;
+  margin-top: -400px;
+  margin-left: 1050px;
+}
+
+.p_red {
+  color: red;
+}
+
+.p_purple {
+  color: purple;
 }
 
 			/* h1, h2 {
@@ -245,10 +264,10 @@
 }
 			
 #lightsaber {
-	width:50px;
+	width:25px;
 	margin:auto;
 	line-height:0;
-	padding:20px;
+	padding:10px;
 	text-align:center;
 }
 
@@ -256,11 +275,11 @@
 			
 #light {
 	position:relative;
-  margin-right: -30px;
-	width:14px;
+  margin-right: -15px;
+	width:7px;
 	background:#fff;
-	height:520px;
-	border-radius:7px 7px 2px 2px;
+	height:260px;
+	border-radius:3.5px 3.5px 1px 1px;
 	box-shadow:0 0 5px #fff,0 0 8px #fff,0 0 12px #fff,0 0 15px blue,0 0 25px blue;
 	z-index:5;
 	-webkit-transition: all 1s;
@@ -270,9 +289,9 @@
 			
 #generator {
   position:relative;
-	top:-3px;
-	width:45px;
-	height:170px;
+	top:-1.5px;
+	width:22.5px;
+	height:85px;
 	z-index:0;
 }
 	
@@ -358,13 +377,13 @@
 			
 #handle span.long,
 #handle .long + .long {
-	height: 35px;
+	height: 20px;
 	border-radius: 0;
 	box-shadow: 0 -1px 2px rgba(0,0,0,0.5) inset, 0 -1px 5px rgba(0,0,0,0.5) inset;
 }
 			
 #handle .long + .long {
-	height: 30px;
+	height: 15px;
 	width: 100%;
 	background-position: 2px 0;
 }
@@ -372,9 +391,9 @@
 #handle span.box {
 	position: absolute;
 	top:121px;left:50%;
-	height: 28px;
-	width: 24px;
-	margin-left:-12px;
+	height: 14px;
+	width: 18px;
+	margin-left:-8px;
 	background: -moz-linear-gradient(#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15,#4b3222,#2c1e15);
 	box-shadow: 0 0 10px rgba(0,0,0,0.9) inset, 0 3px 3px -3px rgba(0,0,0,1);
 	z-index: 5;
@@ -394,7 +413,7 @@
 	position: relative;
 	display: inline-block;
 	width: 100%;
-	height: 30px;
+	height: 15px;
 }
 			
 .wing {
