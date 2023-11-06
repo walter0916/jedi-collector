@@ -9,6 +9,7 @@ body {
 
 .header {
   color: #ffd700;
+  margin-left: 5px;
 }
 
 .container {
@@ -39,4 +40,9 @@ p {
 .features li {
   list-style-type: disc;
   margin-left: 20px;
+}
+
+.header-img {
+  height: 200px;
+  margin-left: 550px;
 }

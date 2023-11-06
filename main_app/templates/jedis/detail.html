@@ -62,44 +62,42 @@
           <p class="p_yellow">Yellow: you have a deep understanding of balance in the force.</p>
       {% endif %}
     </div>
-    <div class="lightsaber-container">
-		<div id="lightsaber" data-color="{{ jedi.get_lightsabercolor_display_value }}" >
-			<span id="light"></span>
-			<span id="generator">
-				<span id="guard">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-				<span id="handlestart">
-					<span></span>
-					<span></span>
-				</span>
-				<span id="handle">
-					<span></span>
-					<span></span>
-					<span></span><span></span>
-					<span></span><span></span>
-					<span></span><span></span>
-
-					<span></span><span></span>
-					<span class="long"></span>
-					<span class="long"></span>
-					<span class="box"></span>
-				</span>
-				<span class="wings">
-					<span class="wing wing1"></span>
-					<span class="wing wing2"></span>
-					<span class="wing wing3"></span>
-				</span>
-
-				<span class="light"></span>
-			</span>
-		</div>
-  </div>
-</div>
+    {% if jedi.get_lightsabercolor_display_value == 'Green'%}
+      <div class="lightsaber">
+        <label for="green-saber"></label>
+        <input type="checkbox" id="green-saber" checked="checked">
+        <div class="switch"></div>
+        <div class="plasma green-saber"></div>
+      </div>
+    {% elif jedi.get_lightsabercolor_display_value == 'Red' %}
+      <div class="lightsaber">
+        <label for="red-saber"></label>
+        <input type="checkbox" id="red-saber" checked="checked">
+        <div class="switch"></div>
+        <div class="plasma red-saber"></div>
+      </div>
+    {% elif jedi.get_lightsabercolor_display_value == 'Purple' %}
+      <div class="lightsaber">
+        <label for="purple-saber"></label>
+        <input type="checkbox" id="purple-saber">
+        <div class="switch"></div>
+        <div class="plasma purple-saber"></div>
+      </div>
+    {% elif jedi.get_lightsabercolor_display_value == 'Blue' %}
+      <div class="lightsaber">
+        <label for="blue-saber"></label>
+        <input type="checkbox" id="blue-saber">
+        <div class="switch"></div>
+        <div class="plasma blue-saber"></div>
+      </div>
+    {% elif jedi.get_lightsabercolor_display_value == 'Yellow' %}
+      <div class="lightsaber">
+        <label for="yellow-saber"></label>
+        <input type="checkbox" id="yellow-saber">
+        <div class="switch"></div>
+        <div class="plasma yellow-saber"></div>
+      </div>
+    {% endif %}
 </section>
 <div class="trainings-mission-container">
   <section class="trainings">
