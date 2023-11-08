@@ -48,7 +48,6 @@ body {
 
 header {
   width: 100%;
-  background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
   border-bottom: var(--borders);
 }
 
@@ -73,13 +72,14 @@ h2 {
 
 nav a {
   text-decoration: none;
-  color: var(--text-color);
   font-weight: 600;
-  font-size: 16px;
+  font-family: 'Days one', sans-serif;
+  font-size: 18px;
+  color: #ffd700; /* Yellow color */
 }
 
 nav a:hover {
-  color: var(--link-hover-color)
+  color: #ffffff;
 }
 
 nav ul {
@@ -104,8 +104,13 @@ nav li {
   text-decoration: none;
   color: #ffd700;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 30px;
+  font-family: 'Days one', sans-serif;
+}
+
+.header-logo-container a:hover {
+  color: #ffffff;
 }
 
 .page-header {
@@ -224,7 +229,7 @@ nav li {
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     header {
-      background: var(--nav-bg);
+      background: rgba(0, 0, 0, 0.7); 
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
@@ -248,7 +253,7 @@ nav li {
   nav,
   .header-logo-container {
     margin: 0;
-    background: var(--nav-bg-ff);
+    background: rgba(0, 0, 0, 0.7); 
     border: var(--borders);
     border-radius: 18px;
   }
@@ -272,9 +277,11 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: rgba(104, 197, 248, .6);
+      background: rgba(0, 0, 0, 0.7); 
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
   }
 }
+
+
