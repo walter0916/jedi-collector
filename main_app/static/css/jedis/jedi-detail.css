@@ -1,6 +1,7 @@
 body {
   background-image: url("https://i.imgur.com/J5ZEcwQ.jpg");
   background-size: cover;
+  font-family: 'Days one', sans-serif;
 }
 
 .jedi-container {
