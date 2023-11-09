@@ -51,15 +51,15 @@
     </div>
     <div class="message">
       {% if jedi.get_lightsabercolor_display_value == 'Blue' %}
-          <p class="p_blue">Blue: your art is focused on sword fighting rather than on the control of the force.</p>
+          <p class="p_blue">Blue saber: your art is focused on sword fighting rather than on the control of the force.</p>
       {% elif jedi.get_lightsabercolor_display_value == 'Red' %}
-          <p class="p_red">Red: you've studied the techniques of the dark side of the force?</p>
+          <p class="p_red">Red saber: you've studied the techniques of the dark side of the force?</p>
       {% elif jedi.get_lightsabercolor_display_value == 'Green' %}
-          <p class="p_green">Green: you prefer the art of the force to study the techniques of sword fighting.</p>
+          <p class="p_green">Green saber: you prefer the art of the force to study the techniques of sword fighting.</p>
       {% elif jedi.get_lightsabercolor_display_value == 'Purple' %}
-          <p class="p_purple">Purple: you know lots of techniques on both sides of the force.</p>
+          <p class="p_purple">Purple saber: you know lots of techniques on both sides of the force.</p>
       {% elif jedi.get_lightsabercolor_display_value == 'Yellow' %}
-          <p class="p_yellow">Yellow: you have a deep understanding of balance in the force.</p>
+          <p class="p_yellow">Yellow saber: you have a deep understanding of balance in the force.</p>
       {% endif %}
     </div>
     {% if jedi.get_lightsabercolor_display_value == 'Green'%}
@@ -148,7 +148,7 @@
       class="subsection-content"
       autocomplete="off"
     >
-      {% if jedi.mission_for_today %}
+      {% if jedi.mission_for_today%}
       <p class="trained">{{ jedi.name }} is on a mission for the day!</p>
       {% else %}
       <p class="not-trained">{{ jedi.name }} is eager to go on a mission!</p>

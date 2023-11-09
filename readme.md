@@ -1,6 +1,11 @@
 # Jedi Collector App
 
+<img src="https://i.imgur.com/4Brhofv.jpg"
+alt = "Jedi collector home page">
+
 Welcome to Jedi Collector, the ultimate platform for Star Wars fans to create and collect their very own Jedi characters! Whether you're a Padawan learner or a seasoned Jedi Master, this app allows you to immerse yourself in the Star Wars universe by creating, training, and sending your Jedi on epic missions.
+
+Try it out for yourself here -> [Deployed app](https://walter-jedi-collector.fly.dev/jedi/8/)
 
 ## Features
 

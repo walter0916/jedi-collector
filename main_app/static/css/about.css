@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Days one', sans-serif;
   background-image: url("https://i.imgur.com/J5ZEcwQ.jpg");
   background-size: cover;
   color: #fff;
@@ -9,7 +9,6 @@ body {
 
 .header {
   color: #ffd700;
-  margin-left: 5px;
 }
 
 .container {

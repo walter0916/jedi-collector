@@ -15,8 +15,9 @@
   </div>
 </section>
 {% if not user.is_authenticated %}
-<section id="login" >
+<section id="login">
   <form action="{% url 'home' %}" method="post" class="login">
+    <img class="login-img" src="{% static 'images/r2d2.png' %}" alt="">
     <h1>Login</h1>
     {% csrf_token %}
     {{ form.as_p }}
