@@ -42,9 +42,12 @@ Try it out for yourself here -> [Deployed app](https://walter-jedi-collector.fly
 - **HTML/CSS:** Frontend markup and styling for the user interface.
 - **SQLite:** Database management system used for storing user and Jedi data.
 
-## Contributing
+## IceBox
 
-Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or create a pull request.
+- Add achievements for a Jedi such as reaching a certain level of stats
+- Add the ability to turn to the Dark side randomly 
+- Add artifacts that can be found during a mission 
+
 
 ---
 
