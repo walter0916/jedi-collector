@@ -38,7 +38,7 @@
     <p>an aspiring jedi {{jedi.get_jeditype_display_value}} being trained by {{ jedi.get_mentor_display_value }}</p>
     <h3> JEDI STATS:</h3>
     <p>Power Level: {{ jedi.powerlevel }}</p>
-    <p>Lighstaber Skill: {{ jedi.lightsaberskill }}</p>
+    <p>Lightsaber Skill: {{ jedi.lightsaberskill }}</p>
     <p>Force Ability: {{ jedi.forceabilities }}</p>
     <p>Defense: {{ jedi.defense }}</p>
     <p>Agility: {{jedi.agility}}</p>
@@ -113,7 +113,7 @@
       autocomplete="off"
     >
       {% if jedi.trained_for_today %}
-      <p class="trained">{{ jedi.name }} has completed all required trainings for they day!</p>
+      <p class="trained">{{ jedi.name }} has completed all required trainings for the day!</p>
       {% else %}
       <p class="not-trained">{{ jedi.name }} is eager to train!</p>
       {% endif %}
